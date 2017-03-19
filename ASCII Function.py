@@ -1,13 +1,31 @@
 LOWER = "33"
 UPPER = "127"
-letter_to_number = str(input("Enter a character: "))
-print("The ASCII code for {} is {}".format(letter_to_number, ord(letter_to_number)))
 
-number_to_letter = int(input("Enter a number between {} and {}: ".format(LOWER, UPPER)))
-while number_to_letter > UPPER or number_to_letter < LOWER:
-    print("error")
-    number_to_letter = int(input("Enter a valid number BETWEEN {} AND 127: ".format(LOWER, UPPER)))
-else:
-    print("The ASCII letter for {} is {}".format(number_to_letter, chr(number_to_letter)))
-    for i in range(LOWER, UPPER):
-        print("{:5}    {}".format(i, chr(i)))
+
+def main():
+    get_number(UPPER, LOWER)
+    get_letter()
+
+
+def get_number(UPPER, LOWER):
+    try:
+        number_recieved = int(input("Enter a number({}-{})".format(LOWER, UPPER)))
+        while int(UPPER) < number_recieved or number_recieved < int(LOWER):
+            number_recieved = int(input("Enter a valid number({}-{})".format(LOWER, UPPER)))
+    except ValueError:
+        print("Please enter a valid number!")
+        get_number(UPPER, LOWER)
+
+
+def get_letter():
+    try:
+        letter_to_number = str(input("Enter a character: "))
+        print("The ASCII code for {} is {}".format(letter_to_number, ord(letter_to_number)))
+    except TypeError:
+        print("Please enter a valid letter!")
+        get_letter()
+
+
+main()
+
+
