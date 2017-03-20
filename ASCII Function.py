@@ -3,9 +3,9 @@ UPPER = "127"
 
 
 def main():
-    get_number(UPPER, LOWER)
+    number = get_number(UPPER, LOWER)
     get_letter()
-
+    print(chr(number))
 
 def get_number(UPPER, LOWER):
     try:
@@ -15,6 +15,7 @@ def get_number(UPPER, LOWER):
     except ValueError:
         print("Please enter a valid number!")
         get_number(UPPER, LOWER)
+    return number_recieved
 
 
 def get_letter():
